@@ -12,8 +12,5 @@ config :logger, level: :warn
 # Configure your database
 config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "byelipk",
-  password: "phoenix4dev",
-  database: "peeping_test",
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox

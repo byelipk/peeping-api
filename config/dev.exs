@@ -39,8 +39,5 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "byelipk",
-  password: "phoenix4dev",
-  database: "peeping_dev",
   hostname: "localhost",
   pool_size: 10
