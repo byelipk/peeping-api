@@ -14,5 +14,5 @@ config :peeping, PeepingWeb.Endpoint,
 # Configure your database
 config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
-  url: System.get_env("DATABASE_URL")
+  url: System.get_env("DATABASE_URL"),
   pool_size: 20
