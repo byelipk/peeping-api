@@ -41,3 +41,5 @@ config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
   hostname: "localhost",
   pool_size: 10
+
+import_config "dev.secret.exs"

@@ -14,3 +14,5 @@ config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
+
+import_config "test.secret.exs"
