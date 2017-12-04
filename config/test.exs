@@ -13,9 +13,11 @@ config :logger, level: :warn
 config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
   hostname: "localhost",
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASS"),
+  database: "#{System.get_env("DB_NAME")}_test",
   pool: Ecto.Adapters.SQL.Sandbox
 
 # Speed up hashing during tests
 config :pbkdf2_elixir, :rounds, 1
 
-import_config "test.secret.exs"

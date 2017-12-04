@@ -12,7 +12,7 @@ config :peeping,
 # Configures the endpoint
 config :peeping, PeepingWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "A6yqTebWL6AM4AyTZ/gXIAgFs2V9QIN/QGBw4h9hp+bf1a7NO1p1yXbqa0SED2VV",
+  secret_key_base: System.get_env("SECRET_KEY_BASE"),
   render_errors: [view: PeepingWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: Peeping.PubSub,
            adapter: Phoenix.PubSub.PG2]
@@ -29,14 +29,13 @@ config :mime, :types, %{
   "application/vnd.api+json" => ["json-api"]
 }
 
-config :guardian, Guardian,
+config :peeping, Peeping.Guardian,
+  issuer: "peeping",
+  secret_key: System.get_env("GUARDIAN_SECRET"),
   allowed_algos: ["HS512"], # optional
   verify_module: Guardian.JWT,  # optional
-  issuer: "peeping",
   ttl: { 30, :days },
-  verify_issuer: true, # optional
-  secret_key: System.get_env("GUARDIAN_SECRET") || "JIPIhQZPikQ7TYhjE3tbj2BBfyxNf5LbcAbaIioX0m82JLgV4AAxWVeweFbGo7w5",
-  serializer: Peeping.GuardianSerializer
+  verify_issuer: true # optional
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

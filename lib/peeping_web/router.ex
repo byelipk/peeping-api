@@ -9,5 +9,6 @@ defmodule PeepingWeb.Router do
     pipe_through :api
 
     resources "/session", SessionController, only: [:index]
+    resources "/register", RegistrationController, only: [:create]
   end
 end

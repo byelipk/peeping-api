@@ -28,7 +28,6 @@ config :peeping, PeepingWeb.Endpoint,
 # If desired, both `http:` and `https:` keys can be
 # configured to run both http and https servers on
 # different ports.
-
 # Do not include metadata nor timestamps in development logs
 config :logger, :console, format: "[$level] $message\n"
 
@@ -40,6 +39,7 @@ config :phoenix, :stacktrace_depth, 20
 config :peeping, Peeping.Repo,
   adapter: Ecto.Adapters.Postgres,
   hostname: "localhost",
+  username: System.get_env("DB_USER"),
+  password: System.get_env("DB_PASS"),
+  database: "#{System.get_env("DB_NAME")}_dev",
   pool_size: 10
-
-import_config "dev.secret.exs"
