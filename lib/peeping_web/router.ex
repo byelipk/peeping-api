@@ -5,6 +5,13 @@ defmodule PeepingWeb.Router do
     plug :accepts, ["json", "json-api"]
   end
 
+  pipeline :api_auth do
+    plug :accepts, ["json", "json-api"]
+    plug Guardian.Plug.VerifyHeader
+    plug Guardian.Plug.EnsureAuthenticated, handler: Peeping.AuthErrorHandler
+    plug Guardian.Plug.LoadResource
+  end
+
   scope "/api", PeepingWeb do
     pipe_through :api
 
@@ -12,5 +19,11 @@ defmodule PeepingWeb.Router do
 
     resources "/session", SessionController, only: [:index]
     resources "/register", RegistrationController, only: [:create]
+  end
+
+  scope "/api", PeepingWeb do
+    pipe_through :api_auth
+
+    get "/user/current", UserController, :current
   end
 end

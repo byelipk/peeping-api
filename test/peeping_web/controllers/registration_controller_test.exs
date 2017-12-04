@@ -4,9 +4,9 @@ defmodule Peeping.RegistrationControllerTest do
   alias Peeping.{Repo, User}
 
   @valid_attrs %{
-    email: "mike@example.com",
-    password: "fqhi12hrrfasf",
-    password_confirmation: "fqhi12hrrfasf"
+    "email" => "mike@example.com",
+    "password" => "fqhi12hrrfasf",
+    "password-confirmation" => "fqhi12hrrfasf"
   }
 
   @invalid_attrs %{}
@@ -19,7 +19,7 @@ defmodule Peeping.RegistrationControllerTest do
     conn = post conn, registration_path(conn, :create), %{data: %{type: "user", attributes: @valid_attrs}}
 
     assert json_response(conn, 201)
-    assert Repo.get_by(User, email: @valid_attrs[:email])
+    assert Repo.get_by(User, email: @valid_attrs["email"])
   end
 
   test "does not create resource and renders errors attrs are invalid", %{conn: conn} do

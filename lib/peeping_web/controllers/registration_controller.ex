@@ -8,7 +8,7 @@ defmodule PeepingWeb.RegistrationController do
     "attributes" => %{
       "email" => email,
       "password" => password,
-      "password_confirmation" => password_confirmation }}}) do
+      "password-confirmation" => password_confirmation }}}) do
       
     changeset = User.changeset(%User{}, %{
       email: email, 
