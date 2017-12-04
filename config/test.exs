@@ -15,4 +15,7 @@ config :peeping, Peeping.Repo,
   hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
 
+# Speed up hashing during tests
+config :pbkdf2_elixir, :rounds, 1
+
 import_config "test.secret.exs"

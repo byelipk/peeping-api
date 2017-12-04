@@ -8,6 +8,6 @@ defmodule PeepingWeb.Router do
   scope "/api", PeepingWeb do
     pipe_through :api
 
-    resources "session", SessionController, only: [:index]
+    resources "/session", SessionController, only: [:index]
   end
 end
