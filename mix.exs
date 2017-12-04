@@ -42,7 +42,8 @@ defmodule Peeping.Mixfile do
       {:cors_plug, "~> 1.1"},
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
-      {:pbkdf2_elixir, "~> 0.12"}
+      {:pbkdf2_elixir, "~> 0.12"},
+      {:ja_serializer, "~> 0.12.0"}
     ]
   end
 

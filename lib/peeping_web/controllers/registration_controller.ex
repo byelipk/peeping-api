@@ -25,7 +25,7 @@ defmodule PeepingWeb.RegistrationController do
       {:error, changeset} ->
         conn
         |> put_status(422)
-        |> render(PeepingWeb.ErrorView, "422.json", changeset: changeset)
+        |> render(PeepingWeb.ChangesetView, "error.json", changeset: changeset)
     end
   end
 

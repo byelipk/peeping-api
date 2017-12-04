@@ -8,6 +8,8 @@ defmodule PeepingWeb.Router do
   scope "/api", PeepingWeb do
     pipe_through :api
 
+    post "/token", SessionController, :create, as: :login
+
     resources "/session", SessionController, only: [:index]
     resources "/register", RegistrationController, only: [:create]
   end
