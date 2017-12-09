@@ -4,11 +4,11 @@ defmodule PeepingWeb.RegistrationController do
   alias Peeping.{Repo, User}
 
   def create(conn, %{"data" => %{ 
-    "type" => "user", 
     "attributes" => %{
       "email" => email,
       "password" => password,
-      "password-confirmation" => password_confirmation }}}) do
+      "password-confirmation" => password_confirmation 
+    }, "type" => "users" }}) do
       
     changeset = User.changeset(%User{}, %{
       email: email, 

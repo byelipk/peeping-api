@@ -7,6 +7,11 @@ defmodule PeepingWeb.ErrorView do
     |> JaSerializer.ErrorSerializer.format
   end
 
+  def render("422.json", %{message: message}) do
+    %{title: message, code: 422}
+    |> JaSerializer.ErrorSerializer.format
+  end
+
   def render("422.json", _assigns) do
     %{title: "Cannot complete request", code: 422}
     |> JaSerializer.ErrorSerializer.format
