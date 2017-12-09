@@ -30,12 +30,11 @@ config :mime, :types, %{
 }
 
 config :peeping, Peeping.Guardian,
+  token_module: Guardian.Token.Jwt,
+  token_verify_module: Guardian.Token.Jwt.Verify,
   issuer: "peeping",
   secret_key: System.get_env("GUARDIAN_SECRET"),
-  allowed_algos: ["HS512"], # optional
-  verify_module: Guardian.JWT,  # optional
-  ttl: { 30, :days },
-  verify_issuer: true # optional
+  ttl: { 30, :days }
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.

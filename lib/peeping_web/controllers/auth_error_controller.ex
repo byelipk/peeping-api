@@ -1,4 +1,4 @@
-defmodule PeepingWeb.AuthErrorHandler do
+defmodule PeepingWeb.AuthErrorController do
   use PeepingWeb, :controller
 
   def unauthenticated(conn, _params) do

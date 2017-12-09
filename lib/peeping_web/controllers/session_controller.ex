@@ -12,6 +12,8 @@ defmodule PeepingWeb.SessionController do
   end
 
   def create(conn, %{"grant_type" => "password", "username" => username, "password" => password}) do
+    # TODO: Probably don't want to 404 this because it gives away to a potential
+    # attacker that there's no user.
     case User |> where(email: ^username) |> Repo.one do
       nil ->
         conn

@@ -9,7 +9,8 @@ defmodule Peeping.Guardian do
   end
 
   def resource_from_claims(claims) do
-    id = claims["bearer"]
+    require IEx; IEx.pry;
+    id = claims["sub"]
     resource = Repo.get_by(User, id: id)
     {:ok, resource}    
   end

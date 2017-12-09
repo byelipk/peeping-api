@@ -7,8 +7,13 @@ defmodule PeepingWeb.Router do
 
   pipeline :api_auth do
     plug :accepts, ["json", "json-api"]
+
+    plug Guardian.Plug.Pipeline,
+      module: Peeping.Guardian,
+      error_handler: PeepingWeb.AuthErrorController
+
     plug Guardian.Plug.VerifyHeader
-    plug Guardian.Plug.EnsureAuthenticated, handler: Peeping.AuthErrorHandler
+    plug Guardian.Plug.EnsureAuthenticated
     plug Guardian.Plug.LoadResource
   end
 

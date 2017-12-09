@@ -1,16 +1,9 @@
 defmodule PeepingWeb.UserController do
   use PeepingWeb, :controller
 
-  # alias Peeping.{Repo, User}
-
-  # plug Guardian.Plug.EnsureAuthenticated, handler: Peeping.AuthErrorHandler
-
   def current(conn, _) do
-    user = 
-      conn
-      |> Guardian.Plug.current_resource
+    user = Peeping.Guardian.Plug.current_resource(conn)
     
-    conn
-    |> render(PeepingWeb.UserView, "show.json", user: user)
+    conn |> render(PeepingWeb.UserView, "show.json", user: user)
   end
 end
