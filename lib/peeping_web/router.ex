@@ -30,5 +30,7 @@ defmodule PeepingWeb.Router do
     pipe_through :api_auth
 
     get "/user/current", UserController, :current
+
+    resources "/rooms", RoomController, only: [:index, :show, :delete, :create, :update]
   end
 end

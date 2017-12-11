@@ -16,7 +16,8 @@ config :peeping, Peeping.Repo,
   username: System.get_env("DB_USER"),
   password: System.get_env("DB_PASS"),
   database: "#{System.get_env("DB_NAME")}_test",
-  pool: Ecto.Adapters.SQL.Sandbox
+  pool: Ecto.Adapters.SQL.Sandbox,
+  ownership_timeout: 999999 
 
 # Speed up hashing during tests
 config :pbkdf2_elixir, :rounds, 1

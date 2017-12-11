@@ -2,6 +2,7 @@ defmodule Peeping.User do
   use Ecto.Schema
   import Ecto.Changeset
   alias Peeping.User
+  alias Peeping.Chats.Room
 
 
   schema "users" do
@@ -9,6 +10,7 @@ defmodule Peeping.User do
     field :password_hash, :string
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
+    has_many :rooms, Room, foreign_key: :owner_id
 
     timestamps()
   end
