@@ -12,13 +12,11 @@ defmodule PeepingWeb.SessionController do
   end
 
   def create(conn, %{"grant_type" => "password", "username" => username, "password" => password}) do
-    # TODO: Probably don't want to 404 this because it gives away to a potential
-    # attacker that there's no user.
     case User |> where(email: ^username) |> Repo.one do
       nil ->
         conn
-        |> put_status(404)
-        |> render(PeepingWeb.ErrorView, "404.json")
+        |> put_status(401)
+        |> render(PeepingWeb.ErrorView, "401.json")
 
       user ->
         cond do
