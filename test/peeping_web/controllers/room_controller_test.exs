@@ -1,10 +1,10 @@
 defmodule PeepingWeb.RoomControllerTest do
   use PeepingWeb.ConnCase
 
+  import Peeping.Factory
+
   alias Peeping.Chats
   alias Peeping.Chats.Room
-  alias Peeping.User
-  alias Peeping.Repo
 
   @create_attrs %{name: "some name"}
   @update_attrs %{name: "some updated name"}
@@ -17,10 +17,7 @@ defmodule PeepingWeb.RoomControllerTest do
   end
 
   setup %{conn: conn} do
-    user = 
-      %User{}
-        |> User.changeset(%{email: "test@example.com", password: "secretpass", password_confirmation: "secretpass"})
-        |> Repo.insert!
+    user = insert(:user)
 
     conn = authenticate(conn, user)
 
@@ -98,7 +95,7 @@ defmodule PeepingWeb.RoomControllerTest do
   end
 
   defp create_room(context) do
-    room = fixture(:room, %{owner_id: context.current_user.id})
+    room = insert(:room, owner: context.current_user)
     {:ok, room: room}
   end
 

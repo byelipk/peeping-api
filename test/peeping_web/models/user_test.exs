@@ -5,10 +5,6 @@ defmodule Peeping.UserTest do
 
   @valid_attrs %{email: "pat@email.com", password: "secretpass", password_confirmation: "secretpass"}
 
-  test "it works" do
-    assert 1 == 1
-  end
-
   test "changeset with valid attributes" do
     changeset = User.changeset(%User{}, @valid_attrs)
     assert changeset.valid? == true

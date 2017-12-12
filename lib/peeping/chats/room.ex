@@ -6,7 +6,8 @@ defmodule Peeping.Chats.Room do
 
   schema "rooms" do
     field :name, :string
-    field :owner_id, :id
+    # field :owner_id, :id
+    belongs_to :owner, Peeping.User
 
     timestamps()
   end
