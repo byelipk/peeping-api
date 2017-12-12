@@ -43,7 +43,8 @@ defmodule Peeping.Mixfile do
       {:guardian, "~> 1.0"},
       {:comeonin, "~> 4.0"},
       {:pbkdf2_elixir, "~> 0.12"},
-      {:ja_serializer, "~> 0.12.0"}
+      {:ja_serializer, "~> 0.12.0"},
+      {:ex_machina, "~> 2.1", only: [:test, :dev]}
     ]
   end
 
