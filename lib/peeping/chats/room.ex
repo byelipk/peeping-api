@@ -15,6 +15,7 @@ defmodule Peeping.Chats.Room do
   def changeset(%Room{} = room, attrs) do
     room
     |> cast(attrs, [:name, :owner_id])
+    |> foreign_key_constraint(:owner_id)
     |> validate_required([:name, :owner_id])
   end
 end

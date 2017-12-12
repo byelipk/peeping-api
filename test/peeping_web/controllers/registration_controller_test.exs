@@ -22,7 +22,7 @@ defmodule Peeping.RegistrationControllerTest do
     assert Repo.get_by(User, email: @valid_attrs["email"])
   end
 
-  test "does not create resource and renders errors attrs are invalid", %{conn: conn} do
+  test "does not create resource and renders errors when attrs are invalid", %{conn: conn} do
     conn = post conn, registration_path(conn, :create), %{data: %{type: "users", attributes: @invalid_attrs}}
 
     assert json_response(conn, 422)

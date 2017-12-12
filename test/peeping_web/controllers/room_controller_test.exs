@@ -44,7 +44,7 @@ defmodule PeepingWeb.RoomControllerTest do
 
     test "renders not found if room does not exist", %{conn: conn, room: _room} do
       assert_error_sent 404, fn ->
-        conn = get conn, room_path(conn, :show, -1)
+        get conn, room_path(conn, :show, -1)
       end
     end
   end
